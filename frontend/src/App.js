@@ -1,9 +1,19 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import HomeScreen from './components/HomeScreen';
 
 const App = () => {
   return (
     <>
-      <h1>ESL Grader v2.0</h1>
+      <Header />
+      <main className="py-3">
+        <Container>
+          <HomeScreen />
+        </Container>
+      </main>
+      <Footer />
     </>
   );
 };
