@@ -1,4 +1,4 @@
-export const feedback = [
+const feedback = [
   {
     _id: '1',
     category: 'pronunciation',
@@ -61,4 +61,4 @@ export const feedback = [
   },
 ];
 
-export default feedback;
+module.exports = feedback;
