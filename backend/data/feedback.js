@@ -1,6 +1,5 @@
 const feedback = [
   {
-    _id: '1',
     category: 'pronunciation',
     feedback: [
       'It seems like you are reading a Youdao translation. You are mispronouncing many words and you seem to have no idea what these words mean.',
@@ -12,7 +11,6 @@ const feedback = [
     ],
   },
   {
-    _id: '2',
     category: 'fluency',
     feedback: [
       'You are reading everything directly from your text. You have to learn to speak naturally without relying on your text.',
@@ -24,7 +22,6 @@ const feedback = [
     ],
   },
   {
-    _id: '3',
     category: 'grammar',
     feedback: [
       'You make extremely basic mistakes, such as not distinguishing plural/singular or not conjugating your verbs at all.',
@@ -36,7 +33,6 @@ const feedback = [
     ],
   },
   {
-    _id: '4',
     category: 'vocabulary',
     feedback: [
       'You seem to be using a Youdao translation, because you are pronouncing many words incorrectly or using them in the wrong context.',
@@ -48,7 +44,6 @@ const feedback = [
     ],
   },
   {
-    _id: '5',
     category: 'content',
     feedback: [
       'You did not meet the minimum time requirements for the assignment and you did not demonstrate any understanding of the video.',
@@ -61,4 +56,4 @@ const feedback = [
   },
 ];
 
-module.exports = feedback;
+export default feedback;
