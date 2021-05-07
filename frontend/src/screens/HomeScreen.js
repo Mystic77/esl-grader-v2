@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Form, Row, Col } from 'react-bootstrap';
 import FeedbackCard from '../components/FeedbackCard';
-import axios from 'axios';
+import Message from '../components/Message';
+import Loader from '../components/Loader';
+import { listUsers } from '../actions/userActions';
 
 const HomeScreen = () => {
-  const [feedback, setFeedback] = useState([]);
+  const dispatch = useDispatch();
+
+  const userList = useSelector((state) => state.userList);
+  const { loading, error, users } = userList;
 
   const [score, setScore] = useState({
     pronunciation: 0,
@@ -15,14 +21,8 @@ const HomeScreen = () => {
   });
 
   useEffect(() => {
-    const fetchFeedback = async () => {
-      const { data } = await axios.get('/api/feedback');
-
-      setFeedback(data);
-    };
-
-    fetchFeedback();
-  }, [score]);
+    dispatch(listUsers());
+  }, [dispatch]);
 
   const scoreChangeHandler = (event) => {
     const updateScore = event.target.value;
@@ -36,60 +36,60 @@ const HomeScreen = () => {
       <h1>Rubric</h1>
       <Container className="text-center">
         <Form onChange={scoreChangeHandler}>
-          {feedback.map((item) => (
+          {users.map((user) => (
             <>
-              <fieldset id={item.category}>
-                <div key={`inline-${item._id}`} className="mb-3">
+              <fieldset id={user.category}>
+                <div key={`inline-${user._id}`} className="mb-3">
                   <Form.Label className="mr-5">
-                    {item.category.toUpperCase()}
+                    {user.feedback[0].category.toUpperCase()}
                   </Form.Label>
                   <Form.Check
                     inline
                     label="0"
                     value="0"
                     type="radio"
-                    name={item.category}
-                    id={`${item.category}0`}
+                    name={user.category}
+                    id={`${user.category}0`}
                   />
                   <Form.Check
                     inline
                     label="1"
                     value="1"
                     type="radio"
-                    name={item.category}
-                    id={`${item.category}1`}
+                    name={user.category}
+                    id={`${user.category}1`}
                   />
                   <Form.Check
                     inline
                     label="2"
                     value="2"
                     type="radio"
-                    name={item.category}
-                    id={`${item.category}2`}
+                    name={user.category}
+                    id={`${user.category}2`}
                   />
                   <Form.Check
                     inline
                     label="3"
                     value="3"
                     type="radio"
-                    name={item.category}
-                    id={`${item.category}3`}
+                    name={user.category}
+                    id={`${user.category}3`}
                   />
                   <Form.Check
                     inline
                     label="4"
                     value="4"
                     type="radio"
-                    name={item.category}
-                    id={`${item.category}4`}
+                    name={user.category}
+                    id={`${user.category}4`}
                   />
                   <Form.Check
                     inline
                     label="5"
                     value="5"
                     type="radio"
-                    name={item.category}
-                    id={`${item.category}5`}
+                    name={user.category}
+                    id={`${user.category}5`}
                   />
                 </div>
               </fieldset>
@@ -100,9 +100,9 @@ const HomeScreen = () => {
       <Container>
         <h1>Feedback</h1>
         <Row>
-          {feedback.map((feedbackItem) => (
+          {users.map((user) => (
             <Col sm={12} md={6} lg={4} xl={3}>
-              <FeedbackCard feedbackItem={feedbackItem} score={score} />
+              <FeedbackCard user={user} score={score} />
             </Col>
           ))}
         </Row>
