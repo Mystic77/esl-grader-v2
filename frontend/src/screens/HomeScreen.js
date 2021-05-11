@@ -6,35 +6,43 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { listUsers } from '../actions/userActions';
 
-const HomeScreen = () => {
+const HomeScreen = ({ location, history }) => {
   const dispatch = useDispatch();
 
-  const userList = useSelector((state) => state.userList);
-  const { loading, error, users } = userList;
+  // const userList = useSelector((state) => state.userList);
+  // const { loading, error, users } = userList;
 
   const [score, setScore] = useState({
-    pronunciation: 0,
-    fluency: 0,
-    grammar: 0,
-    vocabulary: 0,
-    content: 0,
+    //   pronunciation: 0,
+    //   fluency: 0,
+    //   grammar: 0,
+    //   vocabulary: 0,
+    //   content: 0,
   });
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  const redirect = location.search ? location.search.split('=')[1] : '/';
+
   useEffect(() => {
+    if (!userInfo) {
+      history.push(redirect);
+    }
+
     dispatch(listUsers());
   }, [dispatch]);
 
   const scoreChangeHandler = (event) => {
-    const updateScore = event.target.value;
-    const updateCategory = event.target.name;
-
-    setScore({ [updateCategory]: updateScore });
+    //   const updateScore = event.target.value;
+    //   const updateCategory = event.target.name;
+    //   setScore({ [updateCategory]: updateScore });
   };
 
   return (
     <div>
       <h1>Rubric</h1>
-      <Container className="text-center">
+      {/* <Container className="text-center">
         <Form onChange={scoreChangeHandler}>
           {users.map((user) => (
             <>
@@ -106,7 +114,7 @@ const HomeScreen = () => {
             </Col>
           ))}
         </Row>
-      </Container>
+      </Container> */}
     </div>
   );
 };
