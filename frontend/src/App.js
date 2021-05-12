@@ -5,6 +5,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import ProfileScreen from './screens/ProfileScreen';
 import FeedbackEditScreen from './screens/FeedbackEditScreen';
 
 const App = () => {
@@ -15,6 +17,8 @@ const App = () => {
         <Container>
           <Route path="/" component={HomeScreen} exact />
           <Route path="/login" component={LoginScreen} />
+          <Route path="/register" component={RegisterScreen} />
+          <Route path="/profile" component={ProfileScreen} />
           <Route path="/edit" component={FeedbackEditScreen} />
         </Container>
       </main>

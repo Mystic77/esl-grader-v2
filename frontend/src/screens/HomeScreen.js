@@ -4,7 +4,6 @@ import { Container, Form, Row, Col } from 'react-bootstrap';
 import FeedbackCard from '../components/FeedbackCard';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { listUsers } from '../actions/userActions';
 
 const HomeScreen = ({ location, history }) => {
   const dispatch = useDispatch();
@@ -23,15 +22,13 @@ const HomeScreen = ({ location, history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
-  const redirect = location.search ? location.search.split('=')[1] : '/';
+  const redirect = location.search ? location.search.split('=')[1] : '/login';
 
   useEffect(() => {
     if (!userInfo) {
       history.push(redirect);
     }
-
-    dispatch(listUsers());
-  }, [dispatch]);
+  });
 
   const scoreChangeHandler = (event) => {
     //   const updateScore = event.target.value;
