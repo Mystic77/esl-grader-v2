@@ -49,7 +49,7 @@ const FeedbackEditScreen = ({ history }) => {
       {loading && <Loader />}
       <h1 className="text-center">Edit Feedback</h1>
       {feedback.map((feedbackItem) => (
-        <FormContainer>
+        <>
           <h4>{feedbackItem.category.toUpperCase()}</h4>
           <Form>
             <Row>
@@ -57,8 +57,9 @@ const FeedbackEditScreen = ({ history }) => {
                 <Form.Group>
                   <Form.Label>0/5</Form.Label>
                   <Form.Control
+                    type="text"
                     as="textarea"
-                    value={feedbackItem[0]}
+                    placeholder={feedbackItem[0]}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -67,7 +68,7 @@ const FeedbackEditScreen = ({ history }) => {
                   <Form.Label>1/5</Form.Label>
                   <Form.Control
                     as="textarea"
-                    value={feedbackItem[1]}
+                    placeholder={feedbackItem[1]}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -78,8 +79,9 @@ const FeedbackEditScreen = ({ history }) => {
                 <Form.Group as={Col}>
                   <Form.Label>2/5</Form.Label>
                   <Form.Control
+                    type="text"
                     as="textarea"
-                    value={feedbackItem[2]}
+                    placeholder={feedbackItem[2]}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -87,8 +89,9 @@ const FeedbackEditScreen = ({ history }) => {
                 <Form.Group as={Col}>
                   <Form.Label>3/5</Form.Label>
                   <Form.Control
+                    type="text"
                     as="textarea"
-                    value={feedbackItem[3]}
+                    placeholder={feedbackItem[3]}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -99,8 +102,9 @@ const FeedbackEditScreen = ({ history }) => {
                 <Form.Group as={Col}>
                   <Form.Label>4/5</Form.Label>
                   <Form.Control
+                    type="text"
                     as="textarea"
-                    value={feedbackItem[4]}
+                    placeholder={feedbackItem[4]}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -108,14 +112,15 @@ const FeedbackEditScreen = ({ history }) => {
                 <Form.Group as={Col}>
                   <Form.Label>5/5</Form.Label>
                   <Form.Control
+                    type="text"
                     as="textarea"
-                    value={feedbackItem[5]}
+                    placeholder={feedbackItem[5]}
                   ></Form.Control>
                 </Form.Group>
               </Col>
             </Row>
           </Form>
-        </FormContainer>
+        </>
       ))}
       <Button type="submit" variant="primary">
         Save Changes
