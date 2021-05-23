@@ -30,7 +30,9 @@ const HomeScreen = ({ location, history }) => {
     }
   });
 
-  const scoreChangeHandler = (event) => {
+  const scoreChangeHandler = (e) => {
+    e.preventDefault();
+    console.log('Score changed!');
     //   const updateScore = event.target.value;
     //   const updateCategory = event.target.name;
     //   setScore({ [updateCategory]: updateScore });
@@ -39,79 +41,6 @@ const HomeScreen = ({ location, history }) => {
   return (
     <div>
       <h1>Rubric</h1>
-      {/* <Container className="text-center">
-        <Form onChange={scoreChangeHandler}>
-          {users.map((user) => (
-            <>
-              <fieldset id={user.category}>
-                <div key={`inline-${user._id}`} className="mb-3">
-                  <Form.Label className="mr-5">
-                    {user.feedback[0].category.toUpperCase()}
-                  </Form.Label>
-                  <Form.Check
-                    inline
-                    label="0"
-                    value="0"
-                    type="radio"
-                    name={user.category}
-                    id={`${user.category}0`}
-                  />
-                  <Form.Check
-                    inline
-                    label="1"
-                    value="1"
-                    type="radio"
-                    name={user.category}
-                    id={`${user.category}1`}
-                  />
-                  <Form.Check
-                    inline
-                    label="2"
-                    value="2"
-                    type="radio"
-                    name={user.category}
-                    id={`${user.category}2`}
-                  />
-                  <Form.Check
-                    inline
-                    label="3"
-                    value="3"
-                    type="radio"
-                    name={user.category}
-                    id={`${user.category}3`}
-                  />
-                  <Form.Check
-                    inline
-                    label="4"
-                    value="4"
-                    type="radio"
-                    name={user.category}
-                    id={`${user.category}4`}
-                  />
-                  <Form.Check
-                    inline
-                    label="5"
-                    value="5"
-                    type="radio"
-                    name={user.category}
-                    id={`${user.category}5`}
-                  />
-                </div>
-              </fieldset>
-            </>
-          ))}
-        </Form>
-      </Container>
-      <Container>
-        <h1>Feedback</h1>
-        <Row>
-          {users.map((user) => (
-            <Col sm={12} md={6} lg={4} xl={3}>
-              <FeedbackCard user={user} score={score} />
-            </Col>
-          ))}
-        </Row>
-      </Container> */}
     </div>
   );
 };

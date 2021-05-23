@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Row, Col, Button } from 'react-bootstrap';
+import {
+  InputGroup,
+  Form,
+  Dropdown,
+  DropdownButton,
+  Row,
+  Col,
+  Button,
+} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
@@ -8,8 +16,8 @@ import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
 const FeedbackEditScreen = ({ history }) => {
-  const [name, setName] = useState('');
   const [feedback, setFeedback] = useState([]);
+  const [category, setCategory] = useState('');
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -31,101 +39,66 @@ const FeedbackEditScreen = ({ history }) => {
         dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(getUserDetails('profile'));
       } else {
-        setName(user.name);
-        setFeedback([...feedback, ...userInfo.feedback]);
+        setFeedback([...feedback, ...user.feedback]);
       }
     }
   }, [dispatch, history, userInfo, user, success]);
 
-  const submitHandler = () => {
-    console.log('Submitted!');
-  };
-
   return (
-    <>
+    <FormContainer>
+      <h2 className="my-5">Edit Feedback</h2>
       {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
       {success && <Message variant="success">Feedback Updated</Message>}
       {loading && <Loader />}
-      <h1 className="text-center">Edit Feedback</h1>
       {feedback.map((feedbackItem) => (
-        <>
-          <h4>{feedbackItem.category.toUpperCase()}</h4>
-          <Form>
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label>0/5</Form.Label>
-                  <Form.Control
-                    type="text"
-                    as="textarea"
-                    placeholder={feedbackItem[0]}
-                  ></Form.Control>
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group as={Col}>
-                  <Form.Label>1/5</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    placeholder={feedbackItem[1]}
-                  ></Form.Control>
-                </Form.Group>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col>
-                <Form.Group as={Col}>
-                  <Form.Label>2/5</Form.Label>
-                  <Form.Control
-                    type="text"
-                    as="textarea"
-                    placeholder={feedbackItem[2]}
-                  ></Form.Control>
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group as={Col}>
-                  <Form.Label>3/5</Form.Label>
-                  <Form.Control
-                    type="text"
-                    as="textarea"
-                    placeholder={feedbackItem[3]}
-                  ></Form.Control>
-                </Form.Group>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col>
-                <Form.Group as={Col}>
-                  <Form.Label>4/5</Form.Label>
-                  <Form.Control
-                    type="text"
-                    as="textarea"
-                    placeholder={feedbackItem[4]}
-                  ></Form.Control>
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group as={Col}>
-                  <Form.Label>5/5</Form.Label>
-                  <Form.Control
-                    type="text"
-                    as="textarea"
-                    placeholder={feedbackItem[5]}
-                  ></Form.Control>
-                </Form.Group>
-              </Col>
-            </Row>
-          </Form>
-        </>
+        <Form>
+          <Form.Group>
+            <DropdownButton
+              id="category"
+              title={feedbackItem.category.toUpperCase()}
+            >
+              <InputGroup>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>0/5</InputGroup.Text>
+                </InputGroup.Prepend>
+                <Form.Control as="textarea" placeholder={feedbackItem[0]} />
+              </InputGroup>
+              <InputGroup>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>1/5</InputGroup.Text>
+                </InputGroup.Prepend>
+                <Form.Control as="textarea" placeholder={feedbackItem[1]} />
+              </InputGroup>
+              <InputGroup>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>2/5</InputGroup.Text>
+                </InputGroup.Prepend>
+                <Form.Control as="textarea" placeholder={feedbackItem[2]} />
+              </InputGroup>
+              <InputGroup>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>3/5</InputGroup.Text>
+                </InputGroup.Prepend>
+                <Form.Control as="textarea" placeholder={feedbackItem[3]} />
+              </InputGroup>
+              <InputGroup>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>4/5</InputGroup.Text>
+                </InputGroup.Prepend>
+                <Form.Control as="textarea" placeholder={feedbackItem[4]} />
+              </InputGroup>
+              <InputGroup>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>5/5</InputGroup.Text>
+                </InputGroup.Prepend>
+                <Form.Control as="textarea" placeholder={feedbackItem[5]} />
+              </InputGroup>
+            </DropdownButton>
+          </Form.Group>
+        </Form>
       ))}
-      <Button type="submit" variant="primary">
-        Save Changes
-      </Button>
-    </>
+    </FormContainer>
   );
 };
 
