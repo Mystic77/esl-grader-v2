@@ -8,6 +8,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import FeedbackEditScreen from './screens/FeedbackEditScreen';
+import NewFeedbackEdit from './screens/NewFeedbackEdit';
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={RegisterScreen} />
           <Route path="/profile" component={ProfileScreen} />
-          <Route path="/edit" component={FeedbackEditScreen} />
+          <Route path="/edit" component={NewFeedbackEdit} />
         </Container>
       </main>
       <Footer />
