@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Table from 'react-bootstrap/Table';
+import { Form, FormControl, Button, Table, InputGroup } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
@@ -10,7 +10,6 @@ import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
 const FeedbackEditScreen = ({ history }) => {
   const [feedback, setFeedback] = useState([]);
-  const [category, setCategory] = useState('');
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -44,40 +43,35 @@ const FeedbackEditScreen = ({ history }) => {
       {error && <Message variant="danger">{error}</Message>}
       {success && <Message variant="success">Feedback Updated</Message>}
       {loading && <Loader />}
-      {feedback.map((feedbackItem) => (
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th colspan="3">{feedbackItem.category.toUpperCase()}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>0/5</td>
-              <td>{feedbackItem[0]}</td>
-            </tr>
-            <tr>
-              <td>1/5</td>
-              <td>{feedbackItem[1]}</td>
-            </tr>
-            <tr>
-              <td>2/5</td>
-              <td>{feedbackItem[2]}</td>
-            </tr>
-            <tr>
-              <td>3/5</td>
-              <td>{feedbackItem[3]}</td>
-            </tr>
-            <tr>
-              <td>4/5</td>
-              <td>{feedbackItem[4]}</td>
-            </tr>
-            <tr>
-              <td>5/5</td>
-              <td>{feedbackItem[5]}</td>
-            </tr>
-          </tbody>
-        </Table>
+      {feedback.map((feedbackItem, index) => (
+        <Form key={index}>
+          <h4>
+            <input
+              type="text"
+              value={feedbackItem.category}
+              onChange={(e) => {
+                feedbackItem.category = e.target.value;
+                setFeedback([...feedback]);
+                console.log(feedback);
+              }}
+            ></input>
+          </h4>
+          {feedbackItem.mainText.map((mainText, index) => (
+            <InputGroup>
+              <InputGroup.Text>{index}/5</InputGroup.Text>
+              <FormControl
+                as="textarea"
+                aria-label=""
+                value={mainText}
+                onChange={(e) => {
+                  feedbackItem.mainText[index] = e.target.value;
+                  setFeedback([...feedback]);
+                  console.log(feedback);
+                }}
+              />
+            </InputGroup>
+          ))}
+        </Form>
       ))}
     </FormContainer>
   );
