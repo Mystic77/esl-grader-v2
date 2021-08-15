@@ -8,7 +8,7 @@ import FormContainer from '../components/FormContainer';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
-const NewFeedbackEdit = ({ history }) => {
+const FeedbackEditScreen = ({ history }) => {
   const [feedback, setFeedback] = useState([]);
   const [category, setCategory] = useState('');
   const [message, setMessage] = useState(null);
@@ -83,4 +83,4 @@ const NewFeedbackEdit = ({ history }) => {
   );
 };
 
-export default NewFeedbackEdit;
+export default FeedbackEditScreen;
