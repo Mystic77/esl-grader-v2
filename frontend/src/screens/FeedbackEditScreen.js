@@ -36,6 +36,11 @@ const FeedbackEditScreen = ({ history }) => {
     }
   }, [dispatch, history, userInfo, user, success]);
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(updateUserProfile({ id: user._id, feedback }));
+  };
+
   return (
     <FormContainer>
       <h2 className="my-5">Edit Feedback</h2>
@@ -43,36 +48,47 @@ const FeedbackEditScreen = ({ history }) => {
       {error && <Message variant="danger">{error}</Message>}
       {success && <Message variant="success">Feedback Updated</Message>}
       {loading && <Loader />}
-      {feedback.map((feedbackItem, index) => (
-        <Form key={index}>
-          <h4>
-            <input
-              type="text"
-              value={feedbackItem.category}
-              onChange={(e) => {
-                feedbackItem.category = e.target.value;
-                setFeedback([...feedback]);
-                console.log(feedback);
-              }}
-            ></input>
-          </h4>
-          {feedbackItem.mainText.map((mainText, index) => (
-            <InputGroup>
-              <InputGroup.Text>{index}/5</InputGroup.Text>
-              <FormControl
-                as="textarea"
-                aria-label=""
-                value={mainText}
+      <Form onSubmit={submitHandler}>
+        <Form.Group>
+          <Button type="submit" variant="primary">
+            Update
+          </Button>
+        </Form.Group>
+
+        {feedback.map((feedbackItem, index) => (
+          <div key={index}>
+            <Form.Group>
+              <Form.Control
+                type="text"
+                value={feedbackItem.category}
                 onChange={(e) => {
-                  feedbackItem.mainText[index] = e.target.value;
+                  feedbackItem.category = e.target.value;
                   setFeedback([...feedback]);
                   console.log(feedback);
                 }}
-              />
-            </InputGroup>
-          ))}
-        </Form>
-      ))}
+              ></Form.Control>
+            </Form.Group>
+
+            {feedbackItem.mainText.map((mainText, index) => (
+              <Form.Group key={feedbackItem.category + index}>
+                <InputGroup>
+                  <InputGroup.Text>{index}/5</InputGroup.Text>
+                  <Form.Control
+                    as="textarea"
+                    aria-label=""
+                    value={mainText}
+                    onChange={(e) => {
+                      feedbackItem.mainText[index] = e.target.value;
+                      setFeedback([...feedback]);
+                      console.log(feedback);
+                    }}
+                  />
+                </InputGroup>
+              </Form.Group>
+            ))}
+          </div>
+        ))}
+      </Form>
     </FormContainer>
   );
 };
