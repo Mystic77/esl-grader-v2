@@ -1,56 +1,66 @@
 import React, { useState, useEffect } from 'react';
+import { Form } from 'react-bootstrap';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Row, Col } from 'react-bootstrap';
-import FormContainer from '../components/FormContainer';
-import FeedbackCard from '../components/FeedbackCard';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import FormContainer from '../components/FormContainer';
+import { getUserDetails } from '../actions/userActions';
+import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
-const HomeScreen = ({ location, history }) => {
+const FeedbackEditScreen = ({ history }) => {
+  const [feedback, setFeedback] = useState([]);
+  const [message, setMessage] = useState(null);
+
   const dispatch = useDispatch();
 
-  // const [score, setScore] = useState({
-  //   //   pronunciation: 0,
-  //   //   fluency: 0,
-  //   //   grammar: 0,
-  //   //   vocabulary: 0,
-  //   //   content: 0,
-  // });
+  const userDetails = useSelector((state) => state.userDetails);
+  const { loading, error, user } = userDetails;
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
-
-  const redirect = location.search ? location.search.split('=')[1] : '/login';
+  const { userInfo } = userLogin;
 
   useEffect(() => {
     if (!userInfo) {
-      history.push(redirect);
+      history.push('/login');
+    } else {
+      if (!user || !user.name) {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET });
+        dispatch(getUserDetails('profile'));
+      } else {
+        setFeedback([...feedback, ...user.feedback]);
+      }
     }
-  });
-
-  const scoreChangeHandler = (e) => {
-    e.preventDefault();
-    console.log('Score changed!');
-    //   const updateScore = event.target.value;
-    //   const updateCategory = event.target.name;
-    //   setScore({ [updateCategory]: updateScore });
-  };
+  }, [dispatch, history, userInfo, user]);
 
   return (
     <FormContainer>
-      <h1>Rubric</h1>
+      {message && <Message variant="danger">{message}</Message>}
+      {error && <Message variant="danger">{error}</Message>}
+      {loading && <Loader />}
       <Form>
-        <div className="mb-3">
-          <Form.Check inline label="0" name="pronunciation" type="radio" />
-          <Form.Check inline label="1" name="pronunciation" type="radio" />
-          <Form.Check inline label="2" name="pronunciation" type="radio" />
-          <Form.Check inline label="3" name="pronunciation" type="radio" />
-          <Form.Check inline label="4" name="pronunciation" type="radio" />
-          <Form.Check inline label="5" name="pronunciation" type="radio" />
-        </div>
+        {feedback.map((feedbackItem, index) => (
+          <div key={index}>
+            <Form.Group>
+              <h2>{feedbackItem.category}</h2>
+            </Form.Group>
+
+            <Form.Group>
+              {feedbackItem.mainText.map((mainText, index) => (
+                <Form.Check
+                  inline
+                  label={index}
+                  name={feedbackItem.category}
+                  type="radio"
+                  id={feedbackItem.category + index}
+                />
+              ))}
+            </Form.Group>
+          </div>
+        ))}
       </Form>
     </FormContainer>
   );
 };
 
-export default HomeScreen;
+export default FeedbackEditScreen;
