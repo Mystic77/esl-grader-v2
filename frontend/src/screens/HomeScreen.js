@@ -10,6 +10,7 @@ import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
 const FeedbackEditScreen = ({ history }) => {
   const [feedback, setFeedback] = useState([]);
+  const [score, setScore] = useState({});
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const FeedbackEditScreen = ({ history }) => {
         setFeedback([...feedback, ...user.feedback]);
       }
     }
-  }, [dispatch, history, userInfo, user]);
+  }, [dispatch, history, userInfo, user, score]);
 
   return (
     <FormContainer>
@@ -53,12 +54,26 @@ const FeedbackEditScreen = ({ history }) => {
                   name={feedbackItem.category}
                   type="radio"
                   id={feedbackItem.category + index}
+                  onChange={(e) => {
+                    setScore({
+                      ...score,
+                      [feedbackItem.category]: index,
+                    });
+                    console.log(
+                      `${feedbackItem.category} changed to ${index}!`
+                    );
+                    console.log(score);
+                  }}
                 />
               ))}
             </Form.Group>
           </div>
         ))}
       </Form>
+
+      {/* Calculator component */}
+
+      {/* Report Card component */}
     </FormContainer>
   );
 };
