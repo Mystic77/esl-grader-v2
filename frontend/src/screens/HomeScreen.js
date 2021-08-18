@@ -13,7 +13,7 @@ import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
 const FeedbackEditScreen = ({ history }) => {
   const [feedback, setFeedback] = useState([]);
-  const [scores, setScores] = useState({});
+  const [scores, setScores] = useState({ initialValue: 0 });
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ const FeedbackEditScreen = ({ history }) => {
         ))}
       </Form>
 
-      <ScoreCalculator />
+      <ScoreCalculator scores={scores} feedback={feedback} />
       <ReportCard />
     </FormContainer>
   );
