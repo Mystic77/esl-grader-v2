@@ -5,12 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
+import ScoreCalculator from '../components/ScoreCalculator';
+import ReportCard from '../components/ReportCard';
+
 import { getUserDetails } from '../actions/userActions';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
 const FeedbackEditScreen = ({ history }) => {
   const [feedback, setFeedback] = useState([]);
-  const [score, setScore] = useState({});
+  const [scores, setScores] = useState({});
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -32,7 +35,7 @@ const FeedbackEditScreen = ({ history }) => {
         setFeedback([...feedback, ...user.feedback]);
       }
     }
-  }, [dispatch, history, userInfo, user, score]);
+  }, [dispatch, history, userInfo, user, scores]);
 
   return (
     <FormContainer>
@@ -54,15 +57,15 @@ const FeedbackEditScreen = ({ history }) => {
                   name={feedbackItem.category}
                   type="radio"
                   id={feedbackItem.category + index}
-                  onChange={(e) => {
-                    setScore({
-                      ...score,
+                  onChange={() => {
+                    setScores({
+                      ...scores,
                       [feedbackItem.category]: index,
                     });
                     console.log(
                       `${feedbackItem.category} changed to ${index}!`
                     );
-                    console.log(score);
+                    console.log(scores);
                   }}
                 />
               ))}
@@ -71,9 +74,8 @@ const FeedbackEditScreen = ({ history }) => {
         ))}
       </Form>
 
-      {/* Calculator component */}
-
-      {/* Report Card component */}
+      <ScoreCalculator />
+      <ReportCard />
     </FormContainer>
   );
 };
