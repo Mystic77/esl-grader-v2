@@ -13,7 +13,7 @@ import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
 const HomeScreen = ({ history }) => {
   const [feedback, setFeedback] = useState([]);
-  const [scores, setScores] = useState({ initialValue: 0 });
+  const [scores, setScores] = useState({});
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
