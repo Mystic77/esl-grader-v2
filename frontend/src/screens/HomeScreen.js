@@ -55,7 +55,7 @@ const HomeScreen = ({ history }) => {
                   key={feedbackItem.category + textIndex}
                   inline
                   label={textIndex}
-                  name={feedbackItem.category + textIndex}
+                  name={feedbackItem.category}
                   type="radio"
                   id={feedbackItem.category + textIndex}
                   onChange={() => {
@@ -75,8 +75,8 @@ const HomeScreen = ({ history }) => {
         ))}
       </Form>
 
-      {/* <ScoreCalculator scores={scores} />
-      <ReportCard /> */}
+      <ScoreCalculator scores={scores} feedback={feedback} />
+      <ReportCard />
     </FormContainer>
   );
 };
