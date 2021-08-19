@@ -11,7 +11,7 @@ import ReportCard from '../components/ReportCard';
 import { getUserDetails } from '../actions/userActions';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
-const FeedbackEditScreen = ({ history }) => {
+const HomeScreen = ({ history }) => {
   const [feedback, setFeedback] = useState([]);
   const [scores, setScores] = useState({ initialValue: 0 });
   const [message, setMessage] = useState(null);
@@ -35,7 +35,7 @@ const FeedbackEditScreen = ({ history }) => {
         setFeedback([...feedback, ...user.feedback]);
       }
     }
-  }, [dispatch, history, userInfo, user, scores]);
+  }, [dispatch, history, userInfo, user]);
 
   return (
     <FormContainer>
@@ -50,17 +50,18 @@ const FeedbackEditScreen = ({ history }) => {
             </Form.Group>
 
             <Form.Group>
-              {feedbackItem.mainText.map((mainText, index) => (
+              {feedbackItem.mainText.map((mainText, textIndex) => (
                 <Form.Check
+                  key={feedbackItem.category + textIndex}
                   inline
-                  label={index}
-                  name={feedbackItem.category}
+                  label={textIndex}
+                  name={feedbackItem.category + textIndex}
                   type="radio"
-                  id={feedbackItem.category + index}
+                  id={feedbackItem.category + textIndex}
                   onChange={() => {
                     setScores({
                       ...scores,
-                      [feedbackItem.category]: index,
+                      [feedbackItem.category]: textIndex,
                     });
                     console.log(
                       `${feedbackItem.category} changed to ${index}!`
@@ -74,10 +75,10 @@ const FeedbackEditScreen = ({ history }) => {
         ))}
       </Form>
 
-      <ScoreCalculator scores={scores} feedback={feedback} />
-      <ReportCard />
+      {/* <ScoreCalculator scores={scores} />
+      <ReportCard /> */}
     </FormContainer>
   );
 };
 
-export default FeedbackEditScreen;
+export default HomeScreen;
