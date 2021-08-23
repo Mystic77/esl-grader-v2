@@ -7,7 +7,7 @@ const users = [
     password: bcrypt.hashSync('123456', 10),
     feedback: [
       {
-        category: 'pronunciation',
+        category: 'Pronunciation',
         mainText: [
           'It seems like you are reading a Youdao translation. You are mispronouncing many words and you seem to have no idea what these words mean.',
           'Your pronunciation is very hard or impossible to understand by a native speaker. Please review the pronunciation drills.',
@@ -16,9 +16,23 @@ const users = [
           'You speak clearly with good intonation, but you should still work more on common issues such as th and v.',
           'Your pronunciation is accurate, with appropriate intonation, numbers of syllables and other correct nuances of pronunciation.',
         ],
+        commonErrors: [
+          {
+            name: 'TH',
+            text: 'Text for TH',
+          },
+          {
+            name: 'V',
+            text: 'Text for V',
+          },
+          {
+            name: 'E',
+            text: 'Text for E',
+          },
+        ],
       },
       {
-        category: 'fluency',
+        category: 'Fluency',
         mainText: [
           'You are reading everything directly from your text. You have to learn to speak naturally without relying on your text.',
           'You are reading too much from your text. You have to learn to speak naturally without relying on your text.',
@@ -27,9 +41,19 @@ const users = [
           'You hesitated one or two times, but other than that you speak confidently and your ideas flow smoothly.',
           'You speak confidently and naturally with no distracting hesitations. Your ideas flow smoothly.',
         ],
+        commonErrors: [
+          {
+            name: 'Reading',
+            text: 'Text for reading',
+          },
+          {
+            name: 'Punctuation',
+            text: 'Text for punctuation',
+          },
+        ],
       },
       {
-        category: 'grammar',
+        category: 'Grammar',
         mainText: [
           'You make extremely basic mistakes, such as not distinguishing plural/singular or not conjugating your verbs at all.',
           'You are not paying enough attention to your basic tenses, go back and practise the grammar points again.',
@@ -38,9 +62,23 @@ const users = [
           'You occasionally use incorrect verb tenses or incorrectly use parts of speech. However, most of the time you are using correct grammar.',
           'You use the tenses we have seen perfectly and naturally.',
         ],
+        commonErrors: [
+          {
+            name: 'Present tenses',
+            text: 'Text for present tenses',
+          },
+          {
+            name: 'Past tenses',
+            text: 'Text for past tenses',
+          },
+          {
+            name: 'Future tenses',
+            text: 'Text for future tenses',
+          },
+        ],
       },
       {
-        category: 'vocabulary',
+        category: 'Vocabulary',
         mainText: [
           'You seem to be using a Youdao translation, because you are pronouncing many words incorrectly or using them in the wrong context.',
           'Your vocabulary is very limited and you often use incorrect words.',
@@ -49,9 +87,23 @@ const users = [
           'Your vocabulary is sufficient to be understood in most settings and you use words with their correct meaning.',
           'Your vocabulary is rich and you use words with their correct meaning.',
         ],
+        commonErrors: [
+          {
+            name: 'Play',
+            text: 'Text for play with my friends',
+          },
+          {
+            name: 'Playground',
+            text: 'Text for playground',
+          },
+          {
+            name: 'There have',
+            text: 'Text for there have instead of there is/are',
+          },
+        ],
       },
       {
-        category: 'content',
+        category: 'Content',
         mainText: [
           'You did not meet the minimum time requirements for the assignment and you did not demonstrate any understanding of the video.',
           'You seem to have little or no understanding of the video. Your statements were superficial or not relevant.',
@@ -59,6 +111,20 @@ const users = [
           'You are aware of the subject of the video and you attempted to provide relevant ideas about it. You provided some (but not many) details.',
           'You are knowledgeable about the subject and you provided a significant amount of detail given the time available.',
           'You are very knowledgeable about the subject and you provided an outstanding amount of detail given the time available.',
+        ],
+        commonErrors: [
+          {
+            name: 'Under minimum time',
+            text: 'Text for not reaching minimum time requirements',
+          },
+          {
+            name: 'Not relevant to task',
+            text: 'Text for unrelated nonsense',
+          },
+          {
+            name: 'Youdao translation',
+            text: 'Text for using a Youdao translation',
+          },
         ],
       },
     ],
@@ -69,7 +135,7 @@ const users = [
     password: bcrypt.hashSync('123456', 10),
     feedback: [
       {
-        category: 'pronunciation',
+        category: 'Pronunciation',
         mainText: [
           'It seems like you are reading a Youdao translation. You are mispronouncing many words and you seem to have no idea what these words mean.',
           'Your pronunciation is very hard or impossible to understand by a native speaker. Please review the pronunciation drills.',
@@ -78,9 +144,23 @@ const users = [
           'You speak clearly with good intonation, but you should still work more on common issues such as th and v.',
           'Your pronunciation is accurate, with appropriate intonation, numbers of syllables and other correct nuances of pronunciation.',
         ],
+        commonErrors: [
+          {
+            name: 'TH',
+            text: 'Text for TH',
+          },
+          {
+            name: 'V',
+            text: 'Text for V',
+          },
+          {
+            name: 'E',
+            text: 'Text for E',
+          },
+        ],
       },
       {
-        category: 'fluency',
+        category: 'Fluency',
         mainText: [
           'You are reading everything directly from your text. You have to learn to speak naturally without relying on your text.',
           'You are reading too much from your text. You have to learn to speak naturally without relying on your text.',
@@ -89,9 +169,19 @@ const users = [
           'You hesitated one or two times, but other than that you speak confidently and your ideas flow smoothly.',
           'You speak confidently and naturally with no distracting hesitations. Your ideas flow smoothly.',
         ],
+        commonErrors: [
+          {
+            name: 'Reading',
+            text: 'Text for reading',
+          },
+          {
+            name: 'Punctuation',
+            text: 'Text for punctuation',
+          },
+        ],
       },
       {
-        category: 'grammar',
+        category: 'Grammar',
         mainText: [
           'You make extremely basic mistakes, such as not distinguishing plural/singular or not conjugating your verbs at all.',
           'You are not paying enough attention to your basic tenses, go back and practise the grammar points again.',
@@ -100,9 +190,23 @@ const users = [
           'You occasionally use incorrect verb tenses or incorrectly use parts of speech. However, most of the time you are using correct grammar.',
           'You use the tenses we have seen perfectly and naturally.',
         ],
+        commonErrors: [
+          {
+            name: 'Present tenses',
+            text: 'Text for present tenses',
+          },
+          {
+            name: 'Past tenses',
+            text: 'Text for past tenses',
+          },
+          {
+            name: 'Future tenses',
+            text: 'Text for future tenses',
+          },
+        ],
       },
       {
-        category: 'vocabulary',
+        category: 'Vocabulary',
         mainText: [
           'You seem to be using a Youdao translation, because you are pronouncing many words incorrectly or using them in the wrong context.',
           'Your vocabulary is very limited and you often use incorrect words.',
@@ -111,9 +215,23 @@ const users = [
           'Your vocabulary is sufficient to be understood in most settings and you use words with their correct meaning.',
           'Your vocabulary is rich and you use words with their correct meaning.',
         ],
+        commonErrors: [
+          {
+            name: 'Play',
+            text: 'Text for play with my friends',
+          },
+          {
+            name: 'Playground',
+            text: 'Text for playground',
+          },
+          {
+            name: 'There have',
+            text: 'Text for there have instead of there is/are',
+          },
+        ],
       },
       {
-        category: 'content',
+        category: 'Content',
         mainText: [
           'You did not meet the minimum time requirements for the assignment and you did not demonstrate any understanding of the video.',
           'You seem to have little or no understanding of the video. Your statements were superficial or not relevant.',
@@ -121,6 +239,20 @@ const users = [
           'You are aware of the subject of the video and you attempted to provide relevant ideas about it. You provided some (but not many) details.',
           'You are knowledgeable about the subject and you provided a significant amount of detail given the time available.',
           'You are very knowledgeable about the subject and you provided an outstanding amount of detail given the time available.',
+        ],
+        commonErrors: [
+          {
+            name: 'Under minimum time',
+            text: 'Text for not reaching minimum time requirements',
+          },
+          {
+            name: 'Not relevant to task',
+            text: 'Text for unrelated nonsense',
+          },
+          {
+            name: 'Youdao translation',
+            text: 'Text for using a Youdao translation',
+          },
         ],
       },
     ],
@@ -131,7 +263,7 @@ const users = [
     password: bcrypt.hashSync('123456', 10),
     feedback: [
       {
-        category: 'pronunciation',
+        category: 'Pronunciation',
         mainText: [
           'It seems like you are reading a Youdao translation. You are mispronouncing many words and you seem to have no idea what these words mean.',
           'Your pronunciation is very hard or impossible to understand by a native speaker. Please review the pronunciation drills.',
@@ -140,9 +272,23 @@ const users = [
           'You speak clearly with good intonation, but you should still work more on common issues such as th and v.',
           'Your pronunciation is accurate, with appropriate intonation, numbers of syllables and other correct nuances of pronunciation.',
         ],
+        commonErrors: [
+          {
+            name: 'TH',
+            text: 'Text for TH',
+          },
+          {
+            name: 'V',
+            text: 'Text for V',
+          },
+          {
+            name: 'E',
+            text: 'Text for E',
+          },
+        ],
       },
       {
-        category: 'fluency',
+        category: 'Fluency',
         mainText: [
           'You are reading everything directly from your text. You have to learn to speak naturally without relying on your text.',
           'You are reading too much from your text. You have to learn to speak naturally without relying on your text.',
@@ -151,9 +297,19 @@ const users = [
           'You hesitated one or two times, but other than that you speak confidently and your ideas flow smoothly.',
           'You speak confidently and naturally with no distracting hesitations. Your ideas flow smoothly.',
         ],
+        commonErrors: [
+          {
+            name: 'Reading',
+            text: 'Text for reading',
+          },
+          {
+            name: 'Punctuation',
+            text: 'Text for punctuation',
+          },
+        ],
       },
       {
-        category: 'grammar',
+        category: 'Grammar',
         mainText: [
           'You make extremely basic mistakes, such as not distinguishing plural/singular or not conjugating your verbs at all.',
           'You are not paying enough attention to your basic tenses, go back and practise the grammar points again.',
@@ -162,9 +318,23 @@ const users = [
           'You occasionally use incorrect verb tenses or incorrectly use parts of speech. However, most of the time you are using correct grammar.',
           'You use the tenses we have seen perfectly and naturally.',
         ],
+        commonErrors: [
+          {
+            name: 'Present tenses',
+            text: 'Text for present tenses',
+          },
+          {
+            name: 'Past tenses',
+            text: 'Text for past tenses',
+          },
+          {
+            name: 'Future tenses',
+            text: 'Text for future tenses',
+          },
+        ],
       },
       {
-        category: 'vocabulary',
+        category: 'Vocabulary',
         mainText: [
           'You seem to be using a Youdao translation, because you are pronouncing many words incorrectly or using them in the wrong context.',
           'Your vocabulary is very limited and you often use incorrect words.',
@@ -173,9 +343,23 @@ const users = [
           'Your vocabulary is sufficient to be understood in most settings and you use words with their correct meaning.',
           'Your vocabulary is rich and you use words with their correct meaning.',
         ],
+        commonErrors: [
+          {
+            name: 'Play',
+            text: 'Text for play with my friends',
+          },
+          {
+            name: 'Playground',
+            text: 'Text for playground',
+          },
+          {
+            name: 'There have',
+            text: 'Text for there have instead of there is/are',
+          },
+        ],
       },
       {
-        category: 'content',
+        category: 'Content',
         mainText: [
           'You did not meet the minimum time requirements for the assignment and you did not demonstrate any understanding of the video.',
           'You seem to have little or no understanding of the video. Your statements were superficial or not relevant.',
@@ -183,6 +367,20 @@ const users = [
           'You are aware of the subject of the video and you attempted to provide relevant ideas about it. You provided some (but not many) details.',
           'You are knowledgeable about the subject and you provided a significant amount of detail given the time available.',
           'You are very knowledgeable about the subject and you provided an outstanding amount of detail given the time available.',
+        ],
+        commonErrors: [
+          {
+            name: 'Under minimum time',
+            text: 'Text for not reaching minimum time requirements',
+          },
+          {
+            name: 'Not relevant to task',
+            text: 'Text for unrelated nonsense',
+          },
+          {
+            name: 'Youdao translation',
+            text: 'Text for using a Youdao translation',
+          },
         ],
       },
     ],

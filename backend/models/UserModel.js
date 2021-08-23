@@ -22,6 +22,22 @@ const UserSchema = mongoose.Schema({
         required: true,
       },
       mainText: [String],
+      commonErrors: [
+        {
+          name: {
+            type: String,
+            required: true,
+          },
+          text: {
+            type: String,
+            required: true,
+          },
+          include: {
+            type: Boolean,
+            default: false,
+          },
+        },
+      ],
     },
   ],
 });

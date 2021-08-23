@@ -3,7 +3,6 @@ import { Card } from 'react-bootstrap';
 
 const ReportCard = ({ feedback, scores }) => {
   const scoresEntries = Object.entries(scores);
-  const scoresValues = Object.values(scores);
 
   return (
     <div>
