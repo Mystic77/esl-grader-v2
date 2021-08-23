@@ -76,7 +76,7 @@ const HomeScreen = ({ history }) => {
       </Form>
 
       <ScoreCalculator scores={scores} feedback={feedback} />
-      <ReportCard />
+      <ReportCard scores={scores} feedback={feedback} />
     </FormContainer>
   );
 };
