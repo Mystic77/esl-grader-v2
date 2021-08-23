@@ -71,6 +71,18 @@ const HomeScreen = ({ history }) => {
                 />
               ))}
             </Form.Group>
+
+            <Form.Group>
+              {feedbackItem.commonErrors.map((commonError) => (
+                <Form.Check
+                  key={commonError._id}
+                  inline
+                  label={commonError.name}
+                  name={feedbackItem.category}
+                  type="checkbox"
+                />
+              ))}
+            </Form.Group>
           </div>
         ))}
       </Form>
