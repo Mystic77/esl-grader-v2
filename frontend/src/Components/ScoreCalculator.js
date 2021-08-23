@@ -24,7 +24,7 @@ const ScoreCalculator = ({ scores, feedback }) => {
           </h4>
         </Col>
         <Col>
-          <h4>Percentage: {percentage}%</h4>
+          <h4>Percentage: {percentage.toFixed()}%</h4>
         </Col>
       </Row>
     </div>
