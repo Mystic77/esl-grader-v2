@@ -86,6 +86,19 @@ const FeedbackEditScreen = ({ history }) => {
                 </InputGroup>
               </Form.Group>
             ))}
+
+            {feedbackItem.commonErrors.map((commonError) => (
+              <Form.Group key={commonError._id}>
+                <InputGroup>
+                  <InputGroup.Text>{commonError.name}</InputGroup.Text>
+                  <Form.Control
+                    as="textarea"
+                    aria-label=""
+                    value={commonError.text}
+                  />
+                </InputGroup>
+              </Form.Group>
+            ))}
           </div>
         ))}
       </Form>
