@@ -60,6 +60,7 @@ const FeedbackEditScreen = ({ history }) => {
             <Form.Group>
               <Form.Control
                 type="text"
+                size="lg"
                 value={feedbackItem.category}
                 onChange={(e) => {
                   feedbackItem.category = e.target.value;
