@@ -56,7 +56,7 @@ const FeedbackEditScreen = ({ history }) => {
         </Form.Group>
 
         {feedback.map((feedbackItem, index) => (
-          <div key={index}>
+          <div key={index} className="mb-5">
             <Form.Group>
               <Form.Control
                 type="text"

@@ -14,6 +14,8 @@ import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 const HomeScreen = ({ history }) => {
   const [feedback, setFeedback] = useState([]);
   const [scores, setScores] = useState({});
+  const [commonErrors, setCommonErrors] = useState({});
+
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -80,6 +82,13 @@ const HomeScreen = ({ history }) => {
                   label={commonError.name}
                   name={feedbackItem.category}
                   type="checkbox"
+                  onChange={(e) => {
+                    setCommonErrors({
+                      ...commonErrors,
+                      [commonError.name]: e.target.checked,
+                    });
+                    console.log(commonErrors);
+                  }}
                 />
               ))}
             </Form.Group>
