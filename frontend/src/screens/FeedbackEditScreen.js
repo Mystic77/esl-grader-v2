@@ -87,14 +87,30 @@ const FeedbackEditScreen = ({ history }) => {
               </Form.Group>
             ))}
 
+            <h5>Common {feedbackItem.category} Errors:</h5>
             {feedbackItem.commonErrors.map((commonError) => (
               <Form.Group key={commonError._id}>
                 <InputGroup>
-                  <InputGroup.Text>{commonError.name}</InputGroup.Text>
+                  <Form.Control
+                    type="text"
+                    value={commonError.name}
+                    onChange={(e) => {
+                      commonError.name = e.target.value;
+                      setFeedback([...feedback]);
+                      console.log(feedback);
+                    }}
+                  />
+                </InputGroup>
+                <InputGroup>
                   <Form.Control
                     as="textarea"
                     aria-label=""
                     value={commonError.text}
+                    onChange={(e) => {
+                      commonError.text = e.target.value;
+                      setFeedback([...feedback]);
+                      console.log(feedback);
+                    }}
                   />
                 </InputGroup>
               </Form.Group>
