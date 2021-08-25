@@ -97,7 +97,11 @@ const HomeScreen = ({ history }) => {
       </Form>
 
       <ScoreCalculator scores={scores} feedback={feedback} />
-      <ReportCard scores={scores} feedback={feedback} />
+      <ReportCard
+        scores={scores}
+        feedback={feedback}
+        commonErrors={commonErrors}
+      />
     </FormContainer>
   );
 };
