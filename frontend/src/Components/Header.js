@@ -24,6 +24,11 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
+              <LinkContainer to="/">
+                <Nav.Link>
+                  <i className="fas fa-home"></i> Grader
+                </Nav.Link>
+              </LinkContainer>
               <LinkContainer to="/edit">
                 <Nav.Link>
                   <i className="fas fa-edit"></i> Edit Feedback
