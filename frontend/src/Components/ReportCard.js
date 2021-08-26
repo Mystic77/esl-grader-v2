@@ -8,7 +8,7 @@ const ReportCard = ({ feedback, scores, commonErrors }) => {
   return (
     <div>
       {feedback.map((feedbackItem) => (
-        <Card>
+        <Card key={feedbackItem._id}>
           {scoresEntries.map(
             (result) =>
               feedbackItem.category === result[0] && (
