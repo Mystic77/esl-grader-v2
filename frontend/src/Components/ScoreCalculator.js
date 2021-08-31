@@ -16,7 +16,7 @@ const ScoreCalculator = ({ scores, feedback }) => {
 
   return (
     <div>
-      <Row>
+      <Row className="my-3">
         <Col>
           <h4>
             {console.log(scoreValues)}

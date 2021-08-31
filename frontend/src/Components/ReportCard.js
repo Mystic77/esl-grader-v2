@@ -9,6 +9,9 @@ const ReportCard = ({ feedback, scores, commonErrors }) => {
     <div>
       <Row className="my-3">
         <Col>
+          <Button>Check Results</Button>
+        </Col>
+        <Col>
           <Button>Copy To Clipboard</Button>
         </Col>
       </Row>
