@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button, Row, Col } from 'react-bootstrap';
 
 const ReportCard = ({ feedback, scores, commonErrors }) => {
   const scoresEntries = Object.entries(scores);
@@ -7,6 +7,11 @@ const ReportCard = ({ feedback, scores, commonErrors }) => {
 
   return (
     <div>
+      <Row className="my-3">
+        <Col>
+          <Button>Copy To Clipboard</Button>
+        </Col>
+      </Row>
       {feedback.map((feedbackItem) => (
         <Card key={feedbackItem._id}>
           {scoresEntries.map(
