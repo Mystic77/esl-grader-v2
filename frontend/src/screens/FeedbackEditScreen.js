@@ -31,7 +31,7 @@ const FeedbackEditScreen = ({ history }) => {
         dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(getUserDetails('profile'));
       } else {
-        setFeedback([...feedback, ...user.feedback]);
+        setFeedback([...user.feedback]);
       }
     }
   }, [dispatch, history, userInfo, user, success]);
