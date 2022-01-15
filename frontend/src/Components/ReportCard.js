@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
+import { FaArrowDown } from 'react-icons/fa';
 
 const ReportCard = ({ feedback, scores, commonErrors }) => {
   const scoresEntries = Object.entries(scores);
@@ -16,16 +17,27 @@ const ReportCard = ({ feedback, scores, commonErrors }) => {
     document.addEventListener('copy', listener);
     document.execCommand('copy');
     document.removeEventListener('copy', listener);
+
+    document.getElementById('copy').innerHTML = 'Copied!';
+    setTimeout(function () {
+      document.getElementById('copy').innerHTML = 'Copy to Clipboard';
+    }, 1000);
   }
 
   return (
     <>
       <Row className="my-3">
         <Col>
-          <Button>Check Results</Button>
+          <Button>
+            <a href="#feedback">
+              Check Results <FaArrowDown />{' '}
+            </a>
+          </Button>
         </Col>
         <Col>
-          <Button onClick={copyToClip}>Copy To Clipboard</Button>
+          <Button id="copy" onClick={copyToClip}>
+            Copy To Clipboard
+          </Button>
         </Col>
       </Row>
 

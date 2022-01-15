@@ -12,30 +12,30 @@ const users = [
           'It seems like you are reading a Youdao translation. You are mispronouncing many words and you seem to have no idea what these words mean.',
           'Your pronunciation is very hard or impossible to understand by a native speaker. Please review the pronunciation drills.',
           'Your pronunciation is hard to understand by a native speaker. Please review the pronunciation drills.',
-          'Your pronunciation is clear enough. However, you have to pay more attention to common pronunciation issues such as th and v.',
-          'You speak clearly with good intonation, but you should still work more on common issues such as th and v.',
+          'Your pronunciation is clear enough. However, you have to pay more attention to common pronunciation issues.',
+          'You speak clearly with good intonation, but you should still work more on common issues.',
           'Your pronunciation is accurate, with appropriate intonation, numbers of syllables and other correct nuances of pronunciation.',
         ],
         commonErrors: [
           {
             name: 'TH',
-            text: 'Text for TH',
+            text: 'You have to work on your th sound (e.g. "think, thought, thank" NOT "sink, sought, sank").',
           },
           {
             name: 'V',
-            text: 'Text for V',
+            text: 'You have to work on your V sound (e.g. "very" NOT "wary").',
           },
           {
             name: 'E',
-            text: 'Text for E',
+            text: 'The E sound in English is not the same as in Chinese. Practise the pronunciation of words like "tent", "sent" and "then" (NOT like "们").',
           },
         ],
       },
       {
         category: 'Fluency',
         mainText: [
-          'You are reading everything directly from your text. You have to learn to speak naturally without relying on your text.',
-          'You are reading too much from your text. You have to learn to speak naturally without relying on your text.',
+          'You have many hesitations and great difficulty remembering or choosing words.',
+          'You have many hesitations and great difficulty remembering or choosing words.',
           'You have many hesitations and great difficulty remembering or choosing words.',
           'You hesitated several times, but you generally seem to know the desired words, even if it is sometimes necessary to think about them a bit.',
           'You hesitated one or two times, but other than that you speak confidently and your ideas flow smoothly.',
@@ -44,11 +44,15 @@ const users = [
         commonErrors: [
           {
             name: 'Reading',
-            text: 'Text for reading',
+            text: 'You are relying too much on your text. You have to learn to speak from memory without reading from your text.',
           },
           {
             name: 'Punctuation',
-            text: 'Text for punctuation',
+            text: 'You have to work on speaking naturally, such as pausing when there is a comma or a full stop.',
+          },
+          {
+            name: 'Multiple Takes',
+            text: 'You recorded yourself using multiple takes. You have to record your entire presentation in 1 take.',
           },
         ],
       },
@@ -105,25 +109,25 @@ const users = [
       {
         category: 'Content',
         mainText: [
-          'You did not meet the minimum time requirements for the assignment and you did not demonstrate any understanding of the video.',
-          'You seem to have little or no understanding of the video. Your statements were superficial or not relevant.',
-          'You seem to have very little understanding of the video. Your statements were superficial or not relevant.',
-          'You are aware of the subject of the video and you attempted to provide relevant ideas about it. You provided some (but not many) details.',
-          'You are knowledgeable about the subject and you provided a significant amount of detail given the time available.',
-          'You are very knowledgeable about the subject and you provided an outstanding amount of detail given the time available.',
+          'You did not demonstrate any understanding of the topic.',
+          'You seem to have little or no understanding of the topic. Your statements were superficial or not relevant.',
+          'You seem to have very little understanding of the topic. Your statements were superficial or not relevant.',
+          'You are aware of the topic and you attempted to provide relevant ideas about it. You provided some (but not many) details.',
+          'You are knowledgeable about the topic and you provided a significant amount of detail given the time available.',
+          'You are very knowledgeable about the topic and you provided an outstanding amount of detail given the time available.',
         ],
         commonErrors: [
           {
             name: 'Under minimum time',
-            text: 'Text for not reaching minimum time requirements',
+            text: 'You did not reach the minimum time requirements.',
           },
           {
             name: 'Not relevant to task',
-            text: 'Text for unrelated nonsense',
+            text: 'You did not answer the questions properly, make sure that you understand the question clearly before you give your answer.',
           },
           {
             name: 'Youdao translation',
-            text: 'Text for using a Youdao translation',
+            text: 'This is clearly a Youdao or Baidu translation. You have to write your own text or your English will never improve.',
           },
         ],
       },
