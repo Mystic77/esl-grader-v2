@@ -4,8 +4,7 @@ import colors from 'colors';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 import userRoutes from './routes/userRoutes.js';
-
-const path = require('path');
+import 'path';
 
 dotenv.config();
 
